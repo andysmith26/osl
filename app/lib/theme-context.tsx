@@ -106,7 +106,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   };
 
   const updateCustomizations = (newCustomizations: Partial<ThemeContextType['customizations']>) => {
-    setCustomizations(prev => ({ ...prev, ...newCustomizations }));
+    setCustomizations((prev: ThemeContextType['customizations']) => ({ ...prev, ...newCustomizations }));
   };
 
   const value = {
