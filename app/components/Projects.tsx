@@ -17,7 +17,7 @@ export default function Projects({ projects }: ProjectsProps) {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    setIsClient(true); // eslint-disable-line react-hooks/set-state-in-effect
   }, []);
 
   // Prevent hydration mismatch by using default layout until client loads
@@ -83,7 +83,7 @@ function BrutalistProjects({ projects }: ProjectsProps) {
 }
 
 function MinimalProjectCard({ project }: { project: Project }) {
-  const href = project.href || `/projects/${project.slug}`;
+  const href = `/projects/${project.slug}`;
 
   return (
     <Link
@@ -110,7 +110,7 @@ function MinimalProjectCard({ project }: { project: Project }) {
 }
 
 function SwissProjectCard({ project, index }: { project: Project; index: number }) {
-  const href = project.href || `/projects/${project.slug}`;
+  const href = `/projects/${project.slug}`;
 
   return (
     <Link
@@ -150,7 +150,7 @@ function SwissProjectCard({ project, index }: { project: Project; index: number 
 }
 
 function BrutalistProjectCard({ project, index }: { project: Project; index: number }) {
-  const href = project.href || `/projects/${project.slug}`;
+  const href = `/projects/${project.slug}`;
   const rotations = ['-rotate-1', 'rotate-2', '-rotate-2', 'rotate-1'];
   const colors = ['bg-yellow-400', 'bg-orange-500', 'bg-pink-400', 'bg-blue-400'];
   const rotation = rotations[index % rotations.length];

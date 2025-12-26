@@ -10,7 +10,7 @@ export function ThemeSwitcher() {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    setIsClient(true); // eslint-disable-line react-hooks/set-state-in-effect
   }, []);
 
   // Prevent hydration mismatch by using default styles until client loads
@@ -30,28 +30,30 @@ export function ThemeSwitcher() {
   }
 
   const getButtonStyle = () => {
+    const baseClasses = "scale-responsive-subtle flex items-center justify-center transition-all duration-300";
     switch (currentTheme.id) {
       case 'minimal':
-        return "w-12 h-12 rounded-full bg-white border-2 border-stone-200 shadow-lg flex items-center justify-center hover:shadow-xl transition-shadow text-stone-600 hover:text-stone-800";
+        return `w-12 h-12 rounded-full bg-white border-stone-200 shadow-lg hover:shadow-xl text-stone-600 hover:text-stone-800 border-responsive ${baseClasses}`;
       case 'swiss':
-        return "w-12 h-12 bg-white border-2 border-gray-900 flex items-center justify-center hover:bg-red-600 hover:text-white transition-colors text-gray-900";
+        return `w-12 h-12 bg-white border-gray-900 hover:bg-red-600 hover:text-white text-gray-900 border-responsive ${baseClasses}`;
       case 'neo-brutalist':
-        return "w-14 h-14 bg-yellow-400 border-4 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] flex items-center justify-center hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transition-shadow transform rotate-12 hover:rotate-0 text-black font-black";
+        return `w-14 h-14 bg-yellow-400 border-black shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] transform rotate-12 hover:rotate-0 text-black font-black border-responsive-thick ${baseClasses}`;
       default:
-        return "w-12 h-12 rounded-full bg-white border-2 border-gray-200 shadow-lg flex items-center justify-center hover:shadow-xl transition-shadow";
+        return `w-12 h-12 rounded-full bg-white border-gray-200 shadow-lg hover:shadow-xl border-responsive ${baseClasses}`;
     }
   };
 
   const getPanelStyle = () => {
+    const baseClasses = "absolute top-16 right-0 scale-responsive-subtle transition-transform duration-300";
     switch (currentTheme.id) {
       case 'minimal':
-        return "absolute top-16 right-0 w-80 bg-white border border-stone-200 rounded-lg shadow-xl p-6";
+        return `w-80 bg-white border-stone-200 rounded-lg shadow-xl p-responsive-md border-responsive ${baseClasses}`;
       case 'swiss':
-        return "absolute top-16 right-0 w-80 bg-white border-2 border-gray-900 p-6 shadow-none";
+        return `w-80 bg-white border-gray-900 p-responsive-md shadow-none border-responsive ${baseClasses}`;
       case 'neo-brutalist':
-        return "absolute top-20 right-0 w-80 bg-yellow-400 border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-6 transform -rotate-2";
+        return `top-20 w-80 bg-yellow-400 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-responsive-md transform -rotate-2 border-responsive-thick ${baseClasses}`;
       default:
-        return "absolute top-16 right-0 w-80 bg-white border border-gray-200 rounded-lg shadow-xl p-6";
+        return `w-80 bg-white border-gray-200 rounded-lg shadow-xl p-responsive-md border-responsive ${baseClasses}`;
     }
   };
 
@@ -128,43 +130,26 @@ export function ThemeSwitcher() {
             </div>
           </div>
 
-          {/* Scale Controls */}
+          {/* Size Controls */}
           <div className="mb-6">
-            <h4 className="text-sm font-medium text-gray-700 mb-3">Typography Scale</h4>
+            <h4 className={`text-sm mb-3 ${currentTheme.id === 'neo-brutalist' ? 'font-black uppercase text-black' : currentTheme.id === 'swiss' ? 'font-normal uppercase tracking-widest text-gray-500' : 'font-medium text-gray-700'}`}>Size Scale</h4>
             <input
               type="range"
-              min="0.8"
-              max="1.3"
+              min="0.5"
+              max="2.0"
               step="0.1"
-              value={customizations.scale}
-              onChange={(e) => updateCustomizations({ scale: parseFloat(e.target.value) })}
-              className="w-full"
+              value={customizations.size}
+              onChange={(e) => updateCustomizations({ size: parseFloat(e.target.value) })}
+              className={`w-full ${currentTheme.id === 'neo-brutalist' ? 'accent-orange-500' : currentTheme.id === 'swiss' ? 'accent-red-600' : ''}`}
             />
-            <div className="text-xs text-gray-500 mt-1">
-              {Math.round(customizations.scale! * 100)}%
-            </div>
-          </div>
-
-          {/* Spacing Controls */}
-          <div className="mb-6">
-            <h4 className="text-sm font-medium text-gray-700 mb-3">Spacing Scale</h4>
-            <input
-              type="range"
-              min="0.7"
-              max="1.5"
-              step="0.1"
-              value={customizations.spacing}
-              onChange={(e) => updateCustomizations({ spacing: parseFloat(e.target.value) })}
-              className="w-full"
-            />
-            <div className="text-xs text-gray-500 mt-1">
-              {Math.round(customizations.spacing! * 100)}%
+            <div className={`text-xs mt-1 ${currentTheme.id === 'neo-brutalist' ? 'font-bold text-black' : currentTheme.id === 'swiss' ? 'text-gray-600' : 'text-gray-500'}`}>
+              {Math.round(customizations.size! * 100)}%
             </div>
           </div>
 
           {/* Color Preview */}
           <div className="mb-4">
-            <h4 className="text-sm font-medium text-gray-700 mb-3">Color Palette</h4>
+            <h4 className={`text-sm mb-3 ${currentTheme.id === 'neo-brutalist' ? 'font-black uppercase text-black' : currentTheme.id === 'swiss' ? 'font-normal uppercase tracking-widest text-gray-500' : 'font-medium text-gray-700'}`}>Color Palette</h4>
             <div className="flex gap-2 flex-wrap">
               <div 
                 className="w-8 h-8 rounded"
@@ -189,7 +174,7 @@ export function ThemeSwitcher() {
             </div>
           </div>
 
-          <div className="text-xs text-gray-500 pt-3 border-t">
+          <div className={`text-xs pt-3 ${currentTheme.id === 'neo-brutalist' ? 'border-t-4 border-black font-bold text-black' : currentTheme.id === 'swiss' ? 'border-t border-gray-900 text-gray-600' : 'border-t text-gray-500'}`}>
             This theme switcher is itself a featured project on this site.
           </div>
         </div>

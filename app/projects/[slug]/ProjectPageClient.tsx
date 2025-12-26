@@ -17,7 +17,7 @@ export function ProjectPageClient({ project }: ProjectPageClientProps) {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    setIsClient(true); // eslint-disable-line react-hooks/set-state-in-effect
   }, []);
 
   useEffect(() => {
@@ -32,7 +32,7 @@ export function ProjectPageClient({ project }: ProjectPageClientProps) {
           size: Math.random() > 0.5 ? 'w-12 h-12' : 'w-16 h-16'
         });
       }
-      setBackgroundElements(elements);
+      setBackgroundElements(elements); // eslint-disable-line react-hooks/set-state-in-effect
     } else if (isClient && currentTheme.id !== 'neo-brutalist') {
       setBackgroundElements([]);
     }
@@ -49,7 +49,7 @@ export function ProjectPageClient({ project }: ProjectPageClientProps) {
           &larr; Back to all projects
         </Link>
 
-        <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-8">
+        <h1 className="text-responsive-3xl md:text-responsive-4xl font-semibold tracking-tight mb-responsive-lg">
           {project.title}
         </h1>
 
@@ -67,28 +67,28 @@ export function ProjectPageClient({ project }: ProjectPageClientProps) {
 
         {project.problem && (
           <section className="mb-10">
-            <h2 className="text-sm font-medium text-muted uppercase tracking-wide mb-3">
+            <h2 className="text-responsive-sm font-medium text-muted uppercase tracking-wide mb-responsive-xs">
               Problem
             </h2>
-            <p className="text-lg">{project.problem}</p>
+            <p className="text-responsive-lg">{project.problem}</p>
           </section>
         )}
 
         {project.approach && (
           <section className="mb-10">
-            <h2 className="text-sm font-medium text-muted uppercase tracking-wide mb-3">
+            <h2 className="text-responsive-sm font-medium text-muted uppercase tracking-wide mb-responsive-xs">
               Approach
             </h2>
-            <p className="text-lg">{project.approach}</p>
+            <p className="text-responsive-lg">{project.approach}</p>
           </section>
         )}
 
         {project.outcome && (
           <section className="mb-10">
-            <h2 className="text-sm font-medium text-muted uppercase tracking-wide mb-3">
+            <h2 className="text-responsive-sm font-medium text-muted uppercase tracking-wide mb-responsive-xs">
               Outcome
             </h2>
-            <p className="text-lg">{project.outcome}</p>
+            <p className="text-responsive-lg">{project.outcome}</p>
           </section>
         )}
 
@@ -132,7 +132,7 @@ export function ProjectPageClient({ project }: ProjectPageClientProps) {
             </Link>
 
             <div className="bg-white border-4 border-black shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] p-8 transform rotate-1">
-              <h1 className="text-4xl md:text-5xl font-black font-serif uppercase mb-8 text-black leading-tight transform -rotate-1">
+              <h1 className="text-responsive-4xl md:text-responsive-5xl font-black font-serif uppercase mb-responsive-lg text-black leading-tight transform -rotate-1">
                 {project.title}
               </h1>
 
@@ -151,28 +151,28 @@ export function ProjectPageClient({ project }: ProjectPageClientProps) {
               <div className="space-y-8">
                 {project.problem && (
                   <section className="bg-pink-400 border-4 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transform rotate-1">
-                    <h2 className="text-xl font-black uppercase tracking-wide mb-4 text-black font-serif">
+                    <h2 className="text-responsive-xl font-black uppercase tracking-wide mb-responsive-sm text-black font-serif">
                       The Problem
                     </h2>
-                    <p className="text-lg font-bold text-black">{project.problem}</p>
+                    <p className="text-responsive-lg font-bold text-black">{project.problem}</p>
                   </section>
                 )}
 
                 {project.approach && (
                   <section className="bg-blue-400 border-4 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transform -rotate-1">
-                    <h2 className="text-xl font-black uppercase tracking-wide mb-4 text-black font-serif">
+                    <h2 className="text-responsive-xl font-black uppercase tracking-wide mb-responsive-sm text-black font-serif">
                       Our Approach
                     </h2>
-                    <p className="text-lg font-bold text-black">{project.approach}</p>
+                    <p className="text-responsive-lg font-bold text-black">{project.approach}</p>
                   </section>
                 )}
 
                 {project.outcome && (
                   <section className="bg-orange-500 border-4 border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transform rotate-2">
-                    <h2 className="text-xl font-black uppercase tracking-wide mb-4 text-black font-serif">
+                    <h2 className="text-responsive-xl font-black uppercase tracking-wide mb-responsive-sm text-black font-serif">
                       The Outcome
                     </h2>
-                    <p className="text-lg font-bold text-black">{project.outcome}</p>
+                    <p className="text-responsive-lg font-bold text-black">{project.outcome}</p>
                   </section>
                 )}
               </div>
@@ -210,7 +210,7 @@ export function ProjectPageClient({ project }: ProjectPageClientProps) {
           </div>
           
           <div className="col-span-12 lg:col-span-8">
-            <h1 className="text-5xl md:text-6xl font-bold tracking-tight leading-[0.9] mb-8 text-gray-900">
+            <h1 className="text-responsive-5xl md:text-responsive-6xl font-bold tracking-tight leading-[0.9] mb-responsive-lg text-gray-900">
               {project.title}
             </h1>
 
@@ -229,28 +229,28 @@ export function ProjectPageClient({ project }: ProjectPageClientProps) {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {project.problem && (
                 <section>
-                  <h2 className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-4 font-medium">
+                  <h2 className="text-responsive-xs uppercase tracking-[0.2em] text-gray-500 mb-responsive-sm font-medium">
                     01. Problem
                   </h2>
-                  <p className="text-base leading-relaxed text-gray-900">{project.problem}</p>
+                  <p className="text-responsive-base leading-relaxed text-gray-900">{project.problem}</p>
                 </section>
               )}
 
               {project.approach && (
                 <section>
-                  <h2 className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-4 font-medium">
+                  <h2 className="text-responsive-xs uppercase tracking-[0.2em] text-gray-500 mb-responsive-sm font-medium">
                     02. Approach
                   </h2>
-                  <p className="text-base leading-relaxed text-gray-900">{project.approach}</p>
+                  <p className="text-responsive-base leading-relaxed text-gray-900">{project.approach}</p>
                 </section>
               )}
 
               {project.outcome && (
                 <section>
-                  <h2 className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-4 font-medium">
+                  <h2 className="text-responsive-xs uppercase tracking-[0.2em] text-gray-500 mb-responsive-sm font-medium">
                     03. Outcome
                   </h2>
-                  <p className="text-base leading-relaxed text-gray-900">{project.outcome}</p>
+                  <p className="text-responsive-base leading-relaxed text-gray-900">{project.outcome}</p>
                 </section>
               )}
             </div>
@@ -283,7 +283,7 @@ export function ProjectPageClient({ project }: ProjectPageClientProps) {
         &larr; Back to all projects
       </Link>
 
-      <h1 className="text-3xl md:text-4xl font-semibold tracking-tight mb-8">
+      <h1 className="text-responsive-3xl md:text-responsive-4xl font-semibold tracking-tight mb-responsive-lg">
         {project.title}
       </h1>
 
@@ -301,28 +301,28 @@ export function ProjectPageClient({ project }: ProjectPageClientProps) {
 
       {project.problem && (
         <section className="mb-10">
-          <h2 className="text-sm font-medium text-muted uppercase tracking-wide mb-3">
+          <h2 className="text-responsive-sm font-medium text-muted uppercase tracking-wide mb-responsive-xs">
             Problem
           </h2>
-          <p className="text-lg">{project.problem}</p>
+          <p className="text-responsive-lg">{project.problem}</p>
         </section>
       )}
 
       {project.approach && (
         <section className="mb-10">
-          <h2 className="text-sm font-medium text-muted uppercase tracking-wide mb-3">
+          <h2 className="text-responsive-sm font-medium text-muted uppercase tracking-wide mb-responsive-xs">
             Approach
           </h2>
-          <p className="text-lg">{project.approach}</p>
+          <p className="text-responsive-lg">{project.approach}</p>
         </section>
       )}
 
       {project.outcome && (
         <section className="mb-10">
-          <h2 className="text-sm font-medium text-muted uppercase tracking-wide mb-3">
+          <h2 className="text-responsive-sm font-medium text-muted uppercase tracking-wide mb-responsive-xs">
             Outcome
           </h2>
-          <p className="text-lg">{project.outcome}</p>
+          <p className="text-responsive-lg">{project.outcome}</p>
         </section>
       )}
 

@@ -9,7 +9,7 @@ export default function Hero() {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    setIsClient(true); // eslint-disable-line react-hooks/set-state-in-effect
   }, []);
 
   // Prevent hydration mismatch by using default layout until client loads
@@ -49,12 +49,7 @@ export default function Hero() {
       return (
         <section className="pt-16 pb-8 relative z-10">
           <div className="relative">
-            {/* Chunky background element behind title */}
-            <div className="absolute -top-4 -left-4 bg-yellow-400 border-4 border-black shadow-[6px_6px_0px_0px_rgba(0,0,0,1)] px-8 py-4 transform -rotate-2">
-              <span className="text-black font-bold uppercase text-sm tracking-wider">New Portfolio</span>
-            </div>
-            
-            <h1 className="relative z-10 text-5xl md:text-7xl lg:text-8xl font-black font-serif uppercase tracking-tight mb-6 text-black transform -rotate-1 leading-none">
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black font-serif uppercase tracking-tight mb-6 text-black transform -rotate-1 leading-none">
               {siteConfig.name.split(' ').map((word, i) => (
                 <span 
                   key={i} 

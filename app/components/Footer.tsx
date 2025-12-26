@@ -9,7 +9,7 @@ export default function Footer() {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    setIsClient(true); // eslint-disable-line react-hooks/set-state-in-effect
   }, []);
 
   // Prevent hydration mismatch by using default layout until client loads
@@ -129,7 +129,7 @@ export default function Footer() {
         <footer className="relative">
           <div className="bg-black text-yellow-400 border-4 border-yellow-400 shadow-[8px_8px_0px_0px_rgba(255,255,0,1)] p-8 transform rotate-1">
             <h3 className="text-2xl font-black font-serif uppercase mb-4 text-yellow-400">
-              Let's Connect!
+              Let&apos;s Connect!
             </h3>
             <p className="text-lg font-bold mb-6 text-white">{siteConfig.bio}</p>
             <div className="grid grid-cols-2 gap-4">

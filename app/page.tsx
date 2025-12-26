@@ -13,22 +13,22 @@ export default function Home() {
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    setIsClient(true);
+    setIsClient(true); // eslint-disable-line react-hooks/set-state-in-effect
   }, []);
 
   useEffect(() => {
     if (isClient && currentTheme.id === 'neo-brutalist') {
       const elements = [];
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < 12; i++) {
         elements.push({
-          top: `${Math.random() * 80 + 10}%`,
-          left: `${Math.random() * 80 + 10}%`,
+          top: `${Math.random() * 90 + 5}%`,
+          left: `${Math.random() * 90 + 5}%`,
           rotation: `rotate(${Math.random() * 60 - 30}deg)`,
-          color: ['bg-yellow-200', 'bg-orange-200', 'bg-pink-200', 'bg-blue-200', 'bg-green-200'][Math.floor(Math.random() * 5)],
-          size: Math.random() > 0.5 ? 'w-16 h-16' : 'w-24 h-24'
+          color: ['bg-yellow-300', 'bg-orange-300', 'bg-pink-300', 'bg-blue-300', 'bg-green-300', 'bg-purple-300', 'bg-red-300'][Math.floor(Math.random() * 7)],
+          size: Math.random() > 0.6 ? 'w-12 h-12' : Math.random() > 0.3 ? 'w-20 h-20' : 'w-32 h-32'
         });
       }
-      setBackgroundElements(elements);
+      setBackgroundElements(elements); // eslint-disable-line react-hooks/set-state-in-effect
     } else if (isClient && currentTheme.id !== 'neo-brutalist') {
       setBackgroundElements([]);
     }
