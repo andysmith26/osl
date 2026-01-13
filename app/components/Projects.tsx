@@ -34,7 +34,7 @@ function BrutalistProjectCard({ project, index }: { project: Project; index: num
       href={href}
       className={`group block ${rotation} hover:rotate-0 transition-transform duration-300 hover:scale-105`}
     >
-      <div className={`${bgColor} border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-4 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)] transition-shadow`}>
+      <div className={`${bgColor} border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-4 hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] transition-shadow`}>
         {project.image && (
           <div className="mb-3 border-4 border-black overflow-hidden">
             <Image

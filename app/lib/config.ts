@@ -4,13 +4,13 @@ export const siteConfig = {
   bio: "Teacher turned builder. 10 years in classrooms, now making tools that respect how learning actually works.",
   author: {
     name: "Andy",
-    location: "Denver, CO",
+    location: "Woodstock, VT",
   },
   email: "hello@overlyseriousleisure.com",
   resumeHref: "#resume",
   social: {
-    github: "https://github.com/username",
-    linkedin: "https://linkedin.com/in/username",
+    github: "https://github.com/andysmith26",
+    linkedin: "https://linkedin.com/in/andysmith26",
   },
 };
 
