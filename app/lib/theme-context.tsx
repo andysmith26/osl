@@ -5,10 +5,10 @@ import { ThemeId, ThemeConfig, getTheme } from './themes';
 
 interface ThemeContextType {
   currentTheme: ThemeConfig;
-  setTheme: (themeId: ThemeId) => void;
   customizations: {
     colorScheme?: string;
     size?: number;
+    boxDensity?: number;
   };
   updateCustomizations: (customizations: Partial<ThemeContextType['customizations']>) => void;
 }
@@ -16,18 +16,49 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 const STORAGE_KEY = 'osl-theme-preferences';
+export const colorSchemes = [
+  { id: 'default', label: 'Default' },
+  { id: 'graphite', label: 'Graphite' },
+  { id: 'clay', label: 'Clay' },
+  { id: 'coastal', label: 'Coastal' },
+];
+
+const COLOR_SCHEMES: Record<string, Partial<ThemeConfig['colors']>> = {
+  default: {},
+  graphite: {
+    primary: '#1f2937',
+    secondary: '#e5e7eb',
+    accent: '#111827',
+    background: '#f9fafb',
+    surface: '#ffffff',
+  },
+  clay: {
+    primary: '#b45309',
+    secondary: '#fef3c7',
+    accent: '#92400e',
+    background: '#fffbeb',
+    surface: '#fff7ed',
+  },
+  coastal: {
+    primary: '#0369a1',
+    secondary: '#e0f2fe',
+    accent: '#0ea5e9',
+    background: '#f0f9ff',
+    surface: '#ffffff',
+  },
+};
 
 function getInitialThemeState() {
   if (typeof window !== 'undefined') {
     const saved = localStorage.getItem(STORAGE_KEY);
     if (saved) {
       try {
-        const { themeId, customizations: savedCustomizations } = JSON.parse(saved);
+        const { customizations: savedCustomizations } = JSON.parse(saved);
         return {
-          themeId: themeId || 'minimal',
           customizations: savedCustomizations || {
             colorScheme: 'default',
             size: 1,
+            boxDensity: 1,
           }
         };
       } catch {
@@ -36,18 +67,18 @@ function getInitialThemeState() {
     }
   }
   return {
-    themeId: 'minimal' as ThemeId,
     customizations: {
       colorScheme: 'default',
       size: 1,
+      boxDensity: 1,
     }
   };
 }
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [initialState] = useState(getInitialThemeState);
-  const [currentThemeId, setCurrentThemeId] = useState<ThemeId>(initialState.themeId);
   const [customizations, setCustomizations] = useState(initialState.customizations);
+  const currentThemeId: ThemeId = 'neo-brutalist';
 
   // Save preferences when they change
   useEffect(() => {
@@ -64,8 +95,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const theme = getTheme(currentThemeId);
     const root = document.documentElement;
 
+    const schemeOverrides = COLOR_SCHEMES[customizations.colorScheme || 'default'] || {};
+    const colors = { ...theme.colors, ...schemeOverrides };
+
     // Apply base theme colors
-    Object.entries(theme.colors).forEach(([key, value]) => {
+    Object.entries(colors).forEach(([key, value]) => {
       root.style.setProperty(`--color-${key}`, value);
     });
 
@@ -117,17 +151,12 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       
   }, [currentThemeId, customizations]);
 
-  const setTheme = (themeId: ThemeId) => {
-    setCurrentThemeId(themeId);
-  };
-
   const updateCustomizations = (newCustomizations: Partial<ThemeContextType['customizations']>) => {
     setCustomizations((prev: ThemeContextType['customizations']) => ({ ...prev, ...newCustomizations }));
   };
 
   const value = {
     currentTheme: getTheme(currentThemeId),
-    setTheme,
     customizations,
     updateCustomizations,
   };

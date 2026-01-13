@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "./lib/theme-context";
-import { ThemeSwitcher } from "./components/ThemeSwitcher";
+import NeoBrutalistBackground from "./components/NeoBrutalistBackground";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -23,8 +23,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.variable} antialiased`}>
         <ThemeProvider>
+          <NeoBrutalistBackground />
           {children}
-          <ThemeSwitcher />
         </ThemeProvider>
       </body>
     </html>

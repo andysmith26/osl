@@ -2,40 +2,45 @@
 
 /* Base theme variables - will be overridden by JS */
 :root {
-  --color-primary: #78716c;
-  --color-secondary: #e8e4e0;
-  --color-accent: #a8a29e;
-  --color-background: #fafaf9;
+  --color-primary: #000000;
+  --color-secondary: #ffff00;
+  --color-accent: #ff6b35;
+  --color-background: #f5f5f5;
   --color-surface: #ffffff;
-  --color-text: #1c1917;
-  --color-text-secondary: #78716c;
-  --color-border: #e8e4e0;
+  --color-text: #000000;
+  --color-text-secondary: #333333;
+  --color-border: #000000;
   
-  --spacing-xs: 0.5rem;
-  --spacing-sm: 1rem;
-  --spacing-md: 1.5rem;
-  --spacing-lg: 2rem;
-  --spacing-xl: 3rem;
-  --spacing-xxl: 4rem;
+  --spacing-xs: 0.75rem;
+  --spacing-sm: 1.25rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 3rem;
+  --spacing-xl: 4rem;
+  --spacing-xxl: 6rem;
   
-  --font-heading: var(--font-inter);
-  --font-body: var(--font-inter);
+  --font-heading: ui-serif, Georgia, serif;
+  --font-body: ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, monospace;
   
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
-  --text-4xl: 2.25rem;
-  --text-5xl: 3rem;
-  --text-6xl: 3.75rem;
-  --border-radius: 0.375rem;
+  --text-xs: 0.825rem;
+  --text-sm: 0.9625rem;
+  --text-base: 1.1rem;
+  --text-lg: 1.2375rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.65rem;
+  --text-3xl: 2.0625rem;
+  --text-4xl: 2.475rem;
+  --text-5xl: 3.3rem;
+  --text-6xl: 4.125rem;
+  --border-radius: 1rem;
   --scale-factor: 1;
   --border-width: 2px;
   --border-width-thick: 4px;
+}
+
+html {
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
 }
 
 body {
@@ -47,23 +52,6 @@ body {
 }
 
 /* Theme-specific styles */
-.theme-minimal {
-  /* Already matches root variables */
-}
-
-.theme-swiss {
-  font-family: ui-sans-serif, system-ui, sans-serif;
-}
-
-.theme-swiss h1,
-.theme-swiss h2,
-.theme-swiss h3,
-.theme-swiss h4,
-.theme-swiss h5,
-.theme-swiss h6 {
-  font-weight: 400;
-  letter-spacing: -0.02em;
-}
 
 .theme-neo-brutalist {
   font-family: ui-sans-serif, system-ui, sans-serif;
@@ -138,12 +126,6 @@ body {
   border-color: var(--color-border);
   color: var(--color-text);
   border-width: var(--border-width);
-}
-
-.theme-swiss .theme-panel {
-  border-radius: 0;
-  border-width: 2px;
-  border-color: var(--color-text);
 }
 
 .theme-neo-brutalist .theme-panel {
