@@ -9,6 +9,7 @@ interface ThemeContextType {
     colorScheme?: string;
     size?: number;
     boxDensity?: number;
+    boxCount?: number;
   };
   updateCustomizations: (customizations: Partial<ThemeContextType['customizations']>) => void;
 }
@@ -17,10 +18,26 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 const STORAGE_KEY = 'osl-theme-preferences';
 export const colorSchemes = [
-  { id: 'default', label: 'Default' },
-  { id: 'graphite', label: 'Graphite' },
-  { id: 'clay', label: 'Clay' },
-  { id: 'coastal', label: 'Coastal' },
+  {
+    id: 'default',
+    label: 'Default',
+    colors: { primary: '#000000', accent: '#ff6b35', surface: '#ffffff', secondary: '#ffff00' }
+  },
+  {
+    id: 'graphite',
+    label: 'Graphite',
+    colors: { primary: '#1f2937', accent: '#111827', surface: '#ffffff', secondary: '#e5e7eb' }
+  },
+  {
+    id: 'clay',
+    label: 'Clay',
+    colors: { primary: '#b45309', accent: '#92400e', surface: '#fff7ed', secondary: '#fef3c7' }
+  },
+  {
+    id: 'coastal',
+    label: 'Coastal',
+    colors: { primary: '#0369a1', accent: '#0ea5e9', surface: '#ffffff', secondary: '#e0f2fe' }
+  },
 ];
 
 const COLOR_SCHEMES: Record<string, Partial<ThemeConfig['colors']>> = {

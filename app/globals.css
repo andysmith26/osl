@@ -168,3 +168,54 @@ body {
   animation: puffy-pop 420ms cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
   will-change: transform, opacity, filter;
 }
+
+/* Bounce pulse animation for collision feedback */
+@keyframes bounce-pulse {
+  0% {
+    transform: var(--rotation) scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: var(--rotation) scale(1.15);
+    filter: brightness(1.3);
+  }
+  100% {
+    transform: var(--rotation) scale(1);
+    filter: brightness(1);
+  }
+}
+
+.animate-bounce-pulse {
+  animation: bounce-pulse 150ms ease-out;
+}
+
+/* Theme color utility classes */
+.bg-theme-primary { background-color: var(--color-primary); }
+.bg-theme-secondary { background-color: var(--color-secondary); }
+.bg-theme-accent { background-color: var(--color-accent); }
+.bg-theme-surface { background-color: var(--color-surface); }
+.bg-theme-background { background-color: var(--color-background); }
+
+.text-theme-primary { color: var(--color-primary); }
+.text-theme-secondary { color: var(--color-secondary); }
+.text-theme-accent { color: var(--color-accent); }
+.text-theme-text { color: var(--color-text); }
+.text-theme-text-secondary { color: var(--color-text-secondary); }
+
+.border-theme-primary { border-color: var(--color-primary); }
+.border-theme-border { border-color: var(--color-border); }
+.border-theme-accent { border-color: var(--color-accent); }
+
+.shadow-theme-brutal {
+  box-shadow: 8px 8px 0px 0px var(--color-primary);
+}
+.shadow-theme-brutal-sm {
+  box-shadow: 4px 4px 0px 0px var(--color-primary);
+}
+.shadow-theme-brutal-lg {
+  box-shadow: 12px 12px 0px 0px var(--color-primary);
+}
+
+.hover\:shadow-theme-brutal-lg:hover {
+  box-shadow: 12px 12px 0px 0px var(--color-primary);
+}

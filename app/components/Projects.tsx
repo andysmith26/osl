@@ -25,18 +25,19 @@ function BrutalistProjects({ projects }: ProjectsProps) {
 function BrutalistProjectCard({ project, index }: { project: Project; index: number }) {
   const href = `/projects/${project.slug}`;
   const rotations = ['-rotate-1', 'rotate-2', '-rotate-2', 'rotate-1'];
-  const colors = ['bg-yellow-400', 'bg-orange-500', 'bg-pink-400', 'bg-blue-400'];
+  // Alternate between secondary (highlight) and accent colors
+  const colorClasses = ['bg-theme-secondary', 'bg-theme-accent', 'bg-theme-secondary', 'bg-theme-accent'];
   const rotation = rotations[index % rotations.length];
-  const bgColor = colors[index % colors.length];
+  const bgColor = colorClasses[index % colorClasses.length];
 
   return (
     <Link
       href={href}
       className={`group block ${rotation} hover:rotate-0 transition-transform duration-300 hover:scale-105`}
     >
-      <div className={`${bgColor} border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] p-4 hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)] transition-shadow`}>
+      <div className={`${bgColor} border-4 border-theme-border shadow-theme-brutal p-4 hover:shadow-theme-brutal-lg transition-shadow`}>
         {project.image && (
-          <div className="mb-3 border-4 border-black overflow-hidden">
+          <div className="mb-3 border-4 border-theme-border overflow-hidden">
             <Image
               src={project.image}
               alt={project.title}
@@ -46,10 +47,10 @@ function BrutalistProjectCard({ project, index }: { project: Project; index: num
             />
           </div>
         )}
-        <h3 className="text-lg font-black font-serif uppercase mb-2 text-black leading-tight">
+        <h3 className="text-lg font-black font-serif uppercase mb-2 text-theme-text leading-tight">
           {project.title}
         </h3>
-        <p className="text-sm font-bold text-black">{project.description}</p>
+        <p className="text-sm font-bold text-theme-text">{project.description}</p>
       </div>
     </Link>
   );

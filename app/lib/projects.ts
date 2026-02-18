@@ -86,6 +86,16 @@ export const projects: Project[] = [
     approach: "Creating a digital scoring app that handles the game's unique scoring mechanics with clear visual feedback.",
     outcome: "In development as part of the Overly Serious Leisure project collection.",
   },
+  {
+    slug: "yahtzee",
+    title: "Yahtzee Tracker",
+    description:
+      "Track Yahtzee games, analyze player performance, and discover who's truly the dice-rolling champion.",
+    image: "https://placehold.co/800x450/e8e4e0/78716c?text=Yahtzee+Tracker",
+    problem: "Yahtzee games happen frequently but scores are forgotten immediately. Who actually wins most often? Which categories are your best?",
+    approach: "A simple score entry interface with Google authentication, storing game history in the cloud and surfacing interesting statistics over time.",
+    outcome: "Live on this site - sign in to start tracking your games.",
+  },
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
